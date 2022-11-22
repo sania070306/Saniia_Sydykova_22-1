@@ -18,7 +18,7 @@ class Post(models.Model):
     image = models.ImageField()
     discription = models.TextField()
     date = models.DateField()
-    hashtag = models.ManyToManyField(Hashtag)
+    hashtag = models.ManyToManyField(Hashtag, null=True, related_name='posts')
 
     def __str__(self):
         return self.title

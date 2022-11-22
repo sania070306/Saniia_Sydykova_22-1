@@ -1,22 +1,29 @@
 from django.http import HttpResponse
 from datetime import datetime
 from django.shortcuts import render
-from posts.models import Post, Comment
+from posts.models import Post, Comment, Hashtag
+
+
 # Create your views here.
 
 
-def hashtags_view(request):
+def hashtags_view(request, **kwargs):
     if request.method == 'GET':
-        posts = Post.objects.all()
+        hashtags = Hashtag.objects.all()
 
         data = {
-            'posts': posts
+            'hashtags': hashtags
         }
-        return render(request, 'layouts/main.html', context=data)
+        return render(request, 'hashtags/hashtags.html', context=data)
 
-def posts_view (request):
+
+def posts_view(request):
     if request.method == 'GET':
-        posts = Post.objects.all()
+        hashtag_id = request.GET.get('hashtag_id')
+        if hashtag_id:
+            posts = Post.objects.filter(hashtag_id=hashtag_id)
+        else:
+            posts = Post.objects.all()
 
         data = {
             'posts': posts

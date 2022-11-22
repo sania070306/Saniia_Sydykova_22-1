@@ -1,0 +1,22 @@
+{% extends 'layouts/main.html' %}
+
+{% block content %}
+    <style type="text/css">
+        .hashtag {
+            display: flex;
+            justify-content: space-between;
+            width: 20%;
+        }
+    </style>
+    <div class="hashtags">
+        {% for hashtag in hashtags %}
+            <div class="hashtag">
+                <h3>
+                    <a href="/posts/?hashtag_id="{{ hashtag.id }}>
+                        {{ hashtag.title }} ({{ hashtag.posts.count }})
+                    </a>
+                </h3>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
