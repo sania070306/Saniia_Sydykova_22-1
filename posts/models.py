@@ -16,9 +16,9 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=255)
     image = models.ImageField()
-    discription = models.TextField()
+    description = models.TextField()
     date = models.DateField()
-    hashtag = models.ManyToManyField(Hashtag, null=True, related_name='posts')
+    hashtag = models.ForeignKey(Hashtag, on_delete=models.CASCADE, null=True, related_name='posts')
 
     def __str__(self):
         return self.title

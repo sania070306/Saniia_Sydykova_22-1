@@ -12,9 +12,9 @@
             margin-left: 10%;
         }
 
-        .comments > div {
-            height: 45px;
-            margin-bottom: 20px;
+        .comment {
+            height: 50px;
+            margin-bottom: 45px;
             background: #242b2e;
             padding: 10px;
         }
@@ -35,6 +35,16 @@
             width: 70%;
             margin-left: 15%;
         }
+        .create-comment {
+            width: 70%;
+            margin-left: 15%;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+        textarea {
+            height: 30px;
+
+        }
     </style>
     <div class="post">
         <div class="image">
@@ -47,16 +57,27 @@
             </div>
             <h5>{{ post.date }}</h5>
             <div>
-                <p>{{ post.discription }}</p>
+                <p>{{ post.description }}</p>
             </div>
             <h5>{{ post.hashtag.title }}</h5>
         </div>
     </div>
+    <div class="create-comment">
+        <form action="/posts/{{ post.id }}/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="btn btn-primary" value="Leave a comment">
+        </form>
+    </div>
     <div class="comments">
         {% for comment in comments %}
-            <div>
-                <p class="author"> {{ comment.author.username }}</p>
-                <p class="text">{{ comment.text }}</p>
+            <div class="comment">
+                <div class="author">
+                    <p> {{ comment.author.username }}</p>
+                </div>
+                <div>
+                    <p class="text">{{ comment.text }}</p>
+                </div>
             </div>
         {% endfor %}
     </div>
