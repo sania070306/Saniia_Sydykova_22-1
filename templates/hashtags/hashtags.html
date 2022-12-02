@@ -12,7 +12,7 @@
         {% for hashtag in hashtags %}
             <div class="hashtag">
                 <h3>
-                    <a href="/posts/?hashtag_id="{{ hashtag.id }}>
+                    <a href="/posts/?hashtag_id={{ hashtag.id }}">
                         {{ hashtag.title }} ({{ hashtag.posts.count }})
                     </a>
                 </h3>
