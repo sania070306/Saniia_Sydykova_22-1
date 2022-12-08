@@ -12,7 +12,9 @@
     </style>
     <div>
         <form action="/posts/" method="get">
-            <input type="hidden" name="hashtag_id" value="{{ hashtag_id }}">
+            {% if hashtag_id %}
+                <input type="hidden" name="hashtag_id" value="{{ hashtag_id }}">
+            {% endif %}
             <input type="text" name="search" value="">
         </form>
     </div>

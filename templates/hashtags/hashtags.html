@@ -9,7 +9,7 @@
         }
     </style>
     <div class="hashtags">
-        {% for hashtag in hashtags %}
+        {% for hashtag in object_list %}
             <div class="hashtag">
                 <h3>
                     <a href="/posts/?hashtag_id={{ hashtag.id }}">
